@@ -11,6 +11,6 @@ class tintuc extends Model
     protected $fillable=['id','tieude','tieudekd','tomtat','hinh','content','idlt','idtl','solanxem','anhien'];
     public $timestamps=true;
     public function loaitin(){
-        return $this->belongsTo('App/loaitin');
+        return $this->belongsTo('App\loaitin');
     }
 }

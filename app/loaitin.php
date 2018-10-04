@@ -12,10 +12,10 @@ class loaitin extends Model
     protected $fillable=['id','tenlt','tenltkd','anhien','idtl'];
     public $timestamps=true;
     public function theloai(){
-        return $this->belongsTo('App/theloai');
+        return $this->belongsTo('App\theloai');
     }
     public function tintuc(){
-        return $this->hasMany('App/tintuc');
+        return $this->hasMany('App\tintuc');
     }
 
 }
