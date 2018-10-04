@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateTintucsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-
+        Schema::table('tin', function (Blueprint $table) {
+            $table->integer('idLT')->unsigned()->change();
+            $table->foreign('idLT')->references('id')->on('loaitin');
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tintucs');
     }
 }
