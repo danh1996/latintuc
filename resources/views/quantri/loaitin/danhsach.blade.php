@@ -3,42 +3,38 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">THÊM LOẠI TIN</strong>
+            <strong class="card-title">DANH SÁCH LOẠI TIN</strong>
+        </div>
+        <div>
+            {{thongBao()}}
         </div>
         <div class="card-body">
             <table class="table">
                 <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Thứ tự</th>
+                <tr class="text-center">
+                    <th scope="col">Id</th>
                     <th scope="col">Tên Loại tin</th>
                     <th scope="col">Ẩn hiện</th>
                     <th scope="col">Thuộc loại</th>
+                    <th scope="col">Số tin</th>
                     <th scope="col">Sửa/Xóa</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                @foreach($dsLoaiTin as $lt)
+                <tr class="text-center">
+                    <th scope="row">{{$lt->id}}</th>
+                    <td>{{$lt->tenlt}}</td>
+
+                    <td>{{$lt->anhien}}</td>
+                    <td>{{$lt->theloai->tentl}}</td>
+                    <td>{{count($lt->tintuc)}}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-success">Cập nhật</button>
-                        <button type="button" class="btn btn-outline-danger">Xóa</button>
+                        <a type="button" href="quantri/loaitin/sua/{{$lt->id}}" class="btn btn-outline-success" >Cập nhật</a>
+                        <a type="button" href="quantri/loaitin/xoa/{{$lt->id}}" onclick="return xacnhanxoa('Bạn có chắc?')" class="btn btn-outline-danger">Xóa</a>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                @endforeach
                 </tbody>
             </table>
 

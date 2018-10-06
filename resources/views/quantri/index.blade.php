@@ -6,11 +6,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>Quản trị tin tức</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <base href="{{asset('')}}">
     <link rel="apple-touch-icon" href="apple-icon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="{{asset('quantri/favicon.ico')}}">
 
     <link rel="stylesheet" href="{{asset('quantri/assets/css/normalize.css')}}">
@@ -201,6 +203,7 @@
     <script src="{{asset('quantri/assets/js/lib/vector-map/jquery.vmap.min.js')}}"></script>
     <script src="{{asset('quantri/assets/js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{asset('quantri/assets/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/myjs.js')}}"></script>
     <script>
         ( function ( $ ) {
             "use strict";

@@ -3,42 +3,33 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">THÊM LOẠI TIN</strong>
+            <strong class="card-title">Danh sách các THỂ LOẠI</strong>
         </div>
         <div class="card-body">
             <table class="table">
                 <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Thứ tự</th>
-                    <th scope="col">Tên Loại tin</th>
+                <tr class="text-center">
+                    <th scope="col">Id Thể loại</th>
+                    <th scope="col">Tên Thể loại</th>
                     <th scope="col">Ẩn hiện</th>
-                    <th scope="col">Thuộc loại</th>
                     <th scope="col">Sửa/Xóa</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                @foreach($dsTheLoai as $ds)
+                <tr class="text-center">
+                    <th scope="row">{{$ds->id}}</th>
+                    <td>{{$ds->tentl}}</td>
+                    <td>@if($ds->anhien==1) Đang hiện
+                            @else Đang ẩn
+                        @endif
+                        </td>
                     <td>
                         <button type="button" class="btn btn-outline-success">Cập nhật</button>
                         <button type="button" class="btn btn-outline-danger">Xóa</button>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                @endforeach
                 </tbody>
             </table>
 
