@@ -27,6 +27,9 @@ Route::group(['prefix'=>'quantri'],function (){
         Route::get('them','loaitinController@getThem');
         Route::post('them','loaitinController@postThem');
 
+        Route::get('sua/{id}','loaitinController@getSua');
+        Route::post('sua/{id}','loaitinController@postSua');
+
         Route::get('xoa/{id}','loaitinController@getXoa');
         /*Route::get('xoa/{id}',function (){
             echo "day la trang xoa loai tin";
@@ -35,9 +38,15 @@ Route::group(['prefix'=>'quantri'],function (){
     });
 
     Route::group(['prefix'=>'theloai'],function (){
-        Route::get('danhsach','theloaiController@danhsach');
+        Route::get('danhsach','theloaiController@danhsach')->name('quantri/theloai/danhsach');
 
         Route::get('them','theloaiController@getThem');
         Route::post('them','theloaiController@postThem');
+
+        Route::get('sua/{id}','theloaiController@getSua');
+        Route::post('sua/{id}','theloaiController@postSua');
+
+        Route::get('xoa/{id}','theloaiController@getXoa');
+
     });
 });

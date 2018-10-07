@@ -35,6 +35,28 @@ class loaitinController extends Controller
         return redirect('quantri/loaitin/danhsach')->with('thongbao','Bạn đã thêm thành công');
     }
 
+    public function getSua($id){
+        $dsTheLoai=theloai::select('id','tentl')->get();
+        $loaiTin=loaitin::find($id);
+        return view('quantri.loaitin.sua',['dsTheLoai'=>$dsTheLoai,'loaiTin'=>$loaiTin]);
+    }
+
+    public function postSua(loaitinRequest $request,$id){
+        echo $id;
+
+        //buoc dau no tien hanh kiem tra
+        //neu co loi thi no khong luu duoc và trả
+        //ve thong bao loi ban dau
+        //neu khong co nthino moi tien hanh luu va bao cho ta biet la da luu thanh cong
+        $loaiTin=loaitin::find($id);
+        $loaiTin->tenlt=$request->tenlt;
+        //echo changeTitle('dadada');
+        $loaiTin->tenltkd=changeTitle( $request->tenlt);
+        $loaiTin->idtl=$request->theloai;
+        $loaiTin->save();
+        return redirect('quantri/loaitin/danhsach')->with('thongbao','Bạn đã sửa thành công');
+    }
+
     public function getXoa($id){
         $soTin=tintuc::where('idlt',$id)->count();
         if ($soTin==0){//neu khong co tin nao trong loai thi tien hanh xoa
@@ -52,10 +74,4 @@ class loaitinController extends Controller
         }
 
     }
-
-    public function postXoa(){
-        return view('quantri.loaitin.them');
-    }
-
-
 }

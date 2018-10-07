@@ -5,9 +5,7 @@
         <div class="card-header">
             <strong class="card-title">DANH SÁCH LOẠI TIN</strong>
         </div>
-        <div>
-            {{thongBao()}}
-        </div>
+        {{thongBao()}}
         <div class="card-body">
             <table class="table">
                 <thead class="thead-dark">

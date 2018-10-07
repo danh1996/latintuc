@@ -5,5 +5,4 @@ function xacnhanxoa(message) {
         return true;
     }
     else return false;
-
 }

@@ -5,6 +5,7 @@
         <div class="card-header">
             <strong class="card-title">Danh sách các THỂ LOẠI</strong>
         </div>
+        {{thongBao()}}
         <div class="card-body">
             <table class="table">
                 <thead class="thead-dark">
@@ -25,8 +26,8 @@
                         @endif
                         </td>
                     <td>
-                        <button type="button" class="btn btn-outline-success">Cập nhật</button>
-                        <button type="button" class="btn btn-outline-danger">Xóa</button>
+                        <a type="button" class="btn btn-outline-success" href="quantri/theloai/sua/{{$ds->id}}">Cập nhật</a>
+                        <a type="button" class="btn btn-outline-danger" onclick="return xacnhanxoa('Xóa thiệt hả bạn ơi')" href="quantri/theloai/xoa/{{$ds->id}}" >Xóa</a>
                     </td>
                 </tr>
                 @endforeach

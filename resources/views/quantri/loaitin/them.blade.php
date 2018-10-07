@@ -5,7 +5,12 @@
     <div class="card">
         <div class="card-header">
             <strong>Thêm mới LOẠI TIN</strong>
-            {{thongBao()}}
+            @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error) {{$error}} <br>
+                    @endforeach
+                </div>
+            @endif
         </div>
         <div class="card-body card-block">
             <form action="quantri/loaitin/them" method="post" class="form-horizontal">

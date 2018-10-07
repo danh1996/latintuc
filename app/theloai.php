@@ -13,6 +13,4 @@ class theloai extends Model
     public function loaitin(){
         return $this->hasMany('App\loaitin');
     }
-
-
 }
