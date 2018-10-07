@@ -4,183 +4,113 @@
     <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
-            <strong>Basic Form</strong> Elements
+            <strong>Thêm TIN MỚI</strong>
         </div>
+        @if(count($errors)>0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error) {{$error}} <br>
+                @endforeach
+            </div>
+        @endif
+
         <div class="card-body card-block">
-            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+            <form action="quantri/tintuc/them" method="post"  class="form-horizontal">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="row form-group">
-                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên loại tin</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Nhập tên loại tin" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tiêu đề</label></div>
+                    <div class="col-12 col-md-9"><input value="{{old('tieude')}}" type="text" name="tieude" placeholder="Nhập tiêu đề tin" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                 </div>
                 <div class="row form-group">
-                    <div class="col col-md-3"><label for="email-input" class=" form-control-label">Thuộc loại</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="email-input" placeholder="E" class="form-control"><small class="help-block form-text">Please enter your email</small></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="password-input" class=" form-control-label">Password</label></div>
-                    <div class="col-12 col-md-9"><input type="password" id="password-input" name="password-input" placeholder="Password" class="form-control"><small class="help-block form-text">Please enter a complex password</small></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Disabled Input</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="disabled-input" name="disabled-input" placeholder="Disabled" disabled="" class="form-control"></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Textarea</label></div>
-                    <div class="col-12 col-md-9"><textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
-                    <div class="col-12 col-md-9">
-                        <select name="select" id="select" class="form-control">
-                            <option value="0">Please select</option>
-                            <option value="1">Option #1</option>
-                            <option value="2">Option #2</option>
-                            <option value="3">Option #3</option>
-                        </select>
+                    <div class="col col-md-3"><label for="password-input" class=" form-control-label">Hình</label></div>
+                    <div class="col-12 col-md-8"><input value="{{old('hinh')}}" type="text" placeholder="Mời bạn chọn hình"  id="hinh" name="hinh" class="form-control">
+                        <small class="help-block form-text">Please enter a complex password</small>
                     </div>
+                    <div class="col col-md-1"><input type="button" onclick="selectFileWithCKFinder('hinh')" value="…"/></div>
                 </div>
 
                 <div class="row form-group">
-                    <div class="col col-md-3"><label for="disabledSelect" class=" form-control-label">Disabled Select</label></div>
+                    <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Tóm tắt</label></div>
+                    <div class="col-12 col-md-9"><textarea name="tomtat" rows="3" placeholder="Tóm tắt..." class="form-control">{{old('tomtat')}}</textarea></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Nội dung</label></div>
+                    <div class="col-12 col-md-9"><textarea  name="noidung" id="textarea-input" rows="9" placeholder="Nội dung..." class="form-control">{{old('noidung')}}</textarea></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="select" class=" form-control-label">Chọn Thể Loại</label></div>
                     <div class="col-12 col-md-9">
-                        <select name="disabledSelect" id="disabledSelect" disabled="" class="form-control">
-                            <option value="0">Please select</option>
-                            <option value="1">Option #1</option>
-                            <option value="2">Option #2</option>
-                            <option value="3">Option #3</option>
+                        <select name="theloai" id="theloai" class="form-control">
+                            <option>Mời bạn chọn</option>
+                            @foreach($dsTheLoai as $tl)
+                            <option value="{{$tl->id}}">{{$tl->tentl}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col col-md-3"><label for="multiple-select" class=" form-control-label">Multiple select</label></div>
-                    <div class="col col-md-9">
-                        <select name="multiple-select" id="multiple-select" multiple="" class="form-control">
-                            <option value="1">Option #1</option>
-                            <option value="2">Option #2</option>
-                            <option value="3">Option #3</option>
-                            <option value="4">Option #4</option>
-                            <option value="5">Option #5</option>
-                            <option value="6">Option #6</option>
-                            <option value="7">Option #7</option>
-                            <option value="8">Option #8</option>
-                            <option value="9">Option #9</option>
-                            <option value="10">Option #10</option>
+                    <div class="col col-md-3"><label for="select" class=" form-control-label">Chọn Loại tin</label></div>
+                    <div class="col-12 col-md-9">
+                        <select name="loaitin" id="loaitin" class="form-control">
+                            <option>Mời bạn chọn</option>
+                        </select>
                         </select>
                     </div>
                 </div>
+
                 <div class="row form-group">
-                    <div class="col col-md-3"><label class=" form-control-label">Radios</label></div>
-                    <div class="col col-md-9">
-                        <div class="form-check">
-                            <div class="radio">
-                                <label for="radio1" class="form-check-label ">
-                                    <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Option 1
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label for="radio2" class="form-check-label ">
-                                    <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Option 2
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label for="radio3" class="form-check-label ">
-                                    <input type="radio" id="radio3" name="radios" value="option3" class="form-check-input">Option 3
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label class=" form-control-label">Inline Radios</label></div>
+                    <div class="col col-md-3"><label class=" form-control-label">Nổi bật</label></div>
                     <div class="col col-md-9">
                         <div class="form-check-inline form-check">
                             <label for="inline-radio1" class="form-check-label ">
-                                <input type="radio" id="inline-radio1" name="inline-radios" value="option1" class="form-check-input">One
+                                <input type="radio" id="inline-radio1" name="noibat"
+                                       @if(old('noibat')==1)
+                                       checked
+                                       @endif value="1" class="form-check-input">Nổi bật
                             </label>
                             <label for="inline-radio2" class="form-check-label ">
-                                <input type="radio" id="inline-radio2" name="inline-radios" value="option2" class="form-check-input">Two
+                                <input type="radio" id="inline-radio2" @if(old('noibat')==0)
+                                checked
+                                       @endif
+                                       name="noibat" value="0" class="form-check-input">Bình thường
                             </label>
-                            <label for="inline-radio3" class="form-check-label ">
-                                <input type="radio" id="inline-radio3" name="inline-radios" value="option3" class="form-check-input">Three
-                            </label>
+
                         </div>
                     </div>
                 </div>
+
                 <div class="row form-group">
-                    <div class="col col-md-3"><label class=" form-control-label">Checkboxes</label></div>
-                    <div class="col col-md-9">
-                        <div class="form-check">
-                            <div class="checkbox">
-                                <label for="checkbox1" class="form-check-label ">
-                                    <input type="checkbox" id="checkbox1" name="checkbox1" value="option1" class="form-check-input">Option 1
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label for="checkbox2" class="form-check-label ">
-                                    <input type="checkbox" id="checkbox2" name="checkbox2" value="option2" class="form-check-input"> Option 2
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label for="checkbox3" class="form-check-label ">
-                                    <input type="checkbox" id="checkbox3" name="checkbox3" value="option3" class="form-check-input"> Option 3
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label class=" form-control-label">Inline Checkboxes</label></div>
+                    <div class="col col-md-3"><label class=" form-control-label">Ẩn hiện</label></div>
                     <div class="col col-md-9">
                         <div class="form-check-inline form-check">
-                            <label for="inline-checkbox1" class="form-check-label ">
-                                <input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1" class="form-check-input">One
+                            <label for="inline-radio1" class="form-check-label ">
+                                <input type="radio" id="inline-radio1"
+                                       @if(old('anhien')==1)
+                                       checked
+                                       @endif
+                                       name="anhien" value="1" class="form-check-input">Hiện
                             </label>
-                            <label for="inline-checkbox2" class="form-check-label ">
-                                <input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="option2" class="form-check-input">Two
+                            <label for="inline-radio2" class="form-check-label ">
+                                <input
+                                        @if(old('anhien')==0)
+                                        checked
+                                        @endif
+                                        type="radio" id="inline-radio2" name="anhien" value="0" class="form-check-input">Ẩn
                             </label>
-                            <label for="inline-checkbox3" class="form-check-label ">
-                                <input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="option3" class="form-check-input">Three
-                            </label>
+
                         </div>
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="file-input" class=" form-control-label">File input</label></div>
-                    <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="file-multiple-input" class=" form-control-label">Multiple File input</label></div>
-                    <div class="col-12 col-md-9"><input type="file" id="file-multiple-input" name="file-multiple-input" multiple="" class="form-control-file"></div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-dot-circle-o"></i>Thêm
+                    </button>
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-ban"></i>Hoàn tác
+                    </button>
+
                 </div>
             </form>
-        </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
-            </button>
-            <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Reset
-            </button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <strong>Inline</strong> Form
-        </div>
-        <div class="card-body card-block">
-            <form action="" method="post" class="form-inline">
-                <div class="form-group"><label for="exampleInputName2" class="pr-1  form-control-label">Name</label><input type="text" id="exampleInputName2" placeholder="Jane Doe" required="" class="form-control"></div>
-                <div class="form-group"><label for="exampleInputEmail2" class="px-1  form-control-label">Email</label><input type="email" id="exampleInputEmail2" placeholder="jane.doe@example.com" required="" class="form-control"></div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
-            </button>
-            <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Reset
-            </button>
         </div>
     </div>
 </div>

@@ -13,4 +13,5 @@ class tintuc extends Model
     public function loaitin(){
         return $this->belongsTo('App\loaitin','idlt');
     }
+
 }

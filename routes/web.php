@@ -49,4 +49,23 @@ Route::group(['prefix'=>'quantri'],function (){
         Route::get('xoa/{id}','theloaiController@getXoa');
 
     });
+
+    Route::group(['prefix'=>'tintuc'],function (){
+        Route::get('danhsach','tintucController@danhsach')->name('quantri/tintuc/danhsach');
+
+        Route::get('them','tintucController@getThem');
+        Route::post('them','tintucController@postThem');
+
+        Route::get('sua/{id}','tintucController@getSua');
+        Route::post('sua/{id}','tintucController@postSua');
+
+        Route::get('xoa/{id}','tintucController@getXoa');
+
+    });
+
+
+});
+
+Route::group(['prefix'=>'ajax'],function (){
+    Route::post('layloaitin','ajaxController@layloaitin');
 });

@@ -2,7 +2,8 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="{{asset('quantri/favicon.ico')}}">
-
+    <meta name="_token" content="{!! csrf_token() !!}"/>
     <link rel="stylesheet" href="{{asset('quantri/assets/css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('quantri/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('quantri/assets/css/font-awesome.min.css')}}">
@@ -23,10 +24,32 @@
     <link rel="stylesheet" href="{{asset('quantri/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{asset('quantri/assets/scss/style.css')}}">
     <link href="{{asset('quantri/assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
-
+    <script src="{{asset('quantri/assets/js/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('quantri/assets/js/ckfinder/ckfinder.js')}}"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script type="text/javascript">
+        function selectFileWithCKFinder( elementId ) {
+            CKFinder.popup( {
+                chooseFiles: true,
+                width: 800,
+                height: 600,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        var output = document.getElementById( elementId );
+                        output.value = file.getUrl();
+                    } );
+
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        var output = document.getElementById( elementId );
+                        output.value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
+    </script>
 
 </head>
 <body>
@@ -204,6 +227,27 @@
     <script src="{{asset('quantri/assets/js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{asset('quantri/assets/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
         <script src="{{asset('quantri/assets/js/myjs.js')}}"></script>
+
+        <script src="{{asset('quantri/assets/js/lib/data-table/datatables.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+
+        <script src="{{asset('quantri/assets/js/lib/data-table/jszip.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/pdfmake.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/vfs_fonts.js')}}"></script>
+
+        <script src="{{asset('quantri/assets/js/lib/data-table/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
+
+        <script src="{{asset('quantri/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+        <script src="{{asset('quantri/assets/js/lib/data-table/datatables-init.js')}}"></script>
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+            });
+        </script>
+
     <script>
         ( function ( $ ) {
             "use strict";
@@ -221,6 +265,21 @@
                 normalizeFunction: 'polynomial'
             } );
         } )( jQuery );
+
+    </script>
+        <script>
+        $(document).ready(function(e) {
+            CKEDITOR.replace('noidung', {
+            filebrowserBrowseUrl: '{{ asset("quantri/assets/js/ckfinder/ckfinder.html") }}',
+            filebrowserImageBrowseUrl: '{{ asset('quantri/assets/js/ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('quantri/assets/js/ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('quantri/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('quantri/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('quantri/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+
+            });
+            CKEDITOR.config.height = 300;
+            });
     </script>
 
 </body>

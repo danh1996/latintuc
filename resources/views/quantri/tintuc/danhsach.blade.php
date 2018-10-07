@@ -1,48 +1,63 @@
 @extends('quantri.index')
 @section('content')
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card-header">
-            <strong class="card-title">THÊM LOẠI TIN</strong>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Thứ tự</th>
-                    <th scope="col">Tên Loại tin</th>
-                    <th scope="col">Ẩn hiện</th>
-                    <th scope="col">Thuộc loại</th>
-                    <th scope="col">Sửa/Xóa</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-success">Cập nhật</button>
-                        <button type="button" class="btn btn-outline-danger">Xóa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
 
-        </div>
-    </div>
-</div>
-    @endsection
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Danh sách Tin</strong>
+                        </div>
+                        {{thongBao()}}
+                        <div class="card-body">
+                            <table id="danhsachtin" class="table table-striped table-bordered">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>id Tin</th>
+                                    <th>Tiêu đề/Tóm tắt</th>
+                                    <th>Hình</th>
+                                    <th>Thuộc loại tin/Thể loại</th>
+                                    <th>Nổi bật/Ân hiện</th>
+                                    <th>Sửa/Xóa</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($dsTin as $tin)
+                                <tr>
+                                    <td><p>{{$tin->id}}</p>
+                                    </td>
+                                    <td><p>{{$tin->tieude}}</p>
+                                        {{$tin->tomtat}}</td>
+                                    <td><img src="{{asset('dataupload/images/'.$tin->hinh)}}"></td>
+                                    <td>
+                                        <p>Thuộc loại tin:{{$tin->loaitin->tenlt}}</p>
+                                        <p>Thuộc thể loại:{{$tin->loaitin->theloai->tentl}}</p>
+                                    </td>
+                                    <td>
+                                        <p>@if($tin->anhien==1) Đang hiện
+                                            @else Đang ẩn
+                                            @endif
+                                        </p>
+                                        <p>@if($tin->TinNoiBat==1) Tin nổi bật
+                                            @else Tin thường
+                                            @endif</p>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-outline-success" href="quantri/theloai/sua/{{$tin->id}}">Cập nhật</a>
+                                        <a type="button" class="btn btn-outline-danger" onclick="return xacnhanxoa('Xóa thiệt hả bạn ơi')" href="quantri/theloai/xoa/{{$tin->id}}" >Xóa</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+@endsection
