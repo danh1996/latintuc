@@ -23,7 +23,7 @@
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Thuộc loại</label></div>
                     <div class="col-12 col-md-9">
                         <select name="theloai" id="select" class="form-control">
-                            <option value="0">Mời bạn chọn</option>
+                            <option>Mời bạn chọn</option>
                             @foreach($dsTheLoai as $tl )
                             <option value="{{$tl->id}}">{{$tl->tentl}}</option>
                             @endforeach

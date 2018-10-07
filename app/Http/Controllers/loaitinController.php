@@ -5,7 +5,8 @@ use App\theloai;
 use App\loaitin;
 use App\tintuc;
 use Illuminate\Http\Request;
-use App\Http\Requests\loaitinRequest;
+use App\Http\Requests\loaitinthem;
+use App\Http\Requests\loaitinsua;
 
 class loaitinController extends Controller
 {
@@ -21,7 +22,7 @@ class loaitinController extends Controller
         return view('quantri.loaitin.them',['dsTheLoai'=>$dsTheLoai]);
     }
 
-    public function postThem(loaitinRequest $request){
+    public function postThem(loaitinthem $request){
         //buoc dau no tien hanh kiem tra
         //neu co loi thi no khong luu duoc và trả
         //ve thong bao loi ban dau
@@ -30,9 +31,9 @@ class loaitinController extends Controller
         $loaiTin->tenlt=$request->tenlt;
         //echo changeTitle('dadada');
         $loaiTin->tenltkd=changeTitle( $request->tenlt);
-        $loaiTin->idtl=$request->theloai;
+        echo $loaiTin->idtl=$request->theloai;
         $loaiTin->save();
-        return redirect('quantri/loaitin/danhsach')->with('thongbao','Bạn đã thêm thành công');
+        //return redirect('quantri/loaitin/danhsach')->with('thongbao','Bạn đã thêm thành công');
     }
 
     public function getSua($id){
@@ -41,7 +42,7 @@ class loaitinController extends Controller
         return view('quantri.loaitin.sua',['dsTheLoai'=>$dsTheLoai,'loaiTin'=>$loaiTin]);
     }
 
-    public function postSua(loaitinRequest $request,$id){
+    public function postSua(loaitinsua $request,$id){
         echo $id;
 
         //buoc dau no tien hanh kiem tra

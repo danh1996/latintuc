@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class loaitinRequest extends FormRequest
+class loaitinsua extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class loaitinRequest extends FormRequest
     public function rules()
     {
         return [
-            'tenlt'=>'required|min:5|unique:loaitin,tenlt|max:100'
+            'tenlt'=>'required|min:5|max:100',
+            'theloai'=>'numeric'
         ];
     }
 
@@ -33,8 +34,8 @@ class loaitinRequest extends FormRequest
         return [
             'tenlt.required'=>'Bạn ơi chưa nhập tên mà',
             'tenlt.min'=>'Tên loại tin bạn nhập quá ngắn',
-            'tenlt.unique'=>'Tên loại tin bạn nhập bị trùng',
-            'tenlt.max'=>'Tên loại tin bạn nhập quá dài'
+            'tenlt.max'=>'Tên loại tin bạn nhập quá dài',
+            'theloai.numeric'=>'Bạn ơi chưa chọn thể loại mà'
         ];
     }
 }
