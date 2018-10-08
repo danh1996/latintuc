@@ -3,7 +3,6 @@
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -44,19 +43,16 @@
                                             @endif</p>
                                     </td>
                                     <td>
-                                        <a type="button" class="btn btn-outline-success" href="quantri/theloai/sua/{{$tin->id}}">Cập nhật</a>
-                                        <a type="button" class="btn btn-outline-danger" onclick="return xacnhanxoa('Xóa thiệt hả bạn ơi')" href="quantri/theloai/xoa/{{$tin->id}}" >Xóa</a>
+                                        <a type="button" class="btn btn-outline-success" href="quantri/tintuc/sua/{{$tin->id}}">Cập nhật</a>
+                                        <a type="button" class="btn btn-outline-danger" onclick="return xacnhanxoa('Xóa thiệt hả bạn ơi')" href="quantri/tintuc/xoa/{{$tin->id}}" >Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->

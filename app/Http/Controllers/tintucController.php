@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\tintucsua;
 use App\Http\Requests\tintucthem;
 use App\tintuc;
 use App\theloai;
@@ -30,7 +31,6 @@ class tintucController extends Controller
         $tinTuc->tieudekd=changeTitle( $request->tieude);
         $tinTuc->tomtat=$request->tomtat;
         $hinh=explode('/',$request->hinh);
-        echo $hinh[7];
         $tinTuc->hinh=$hinh[7];
         $tinTuc->idtl=$request->theloai;
         $tinTuc->idlt=$request->loaitin;
@@ -38,42 +38,36 @@ class tintucController extends Controller
         $tinTuc->content=$request->noidung;
         $tinTuc->TinNoiBat=$request->noibat;
         $tinTuc->save();
-        //return redirect('quantri/tintuc/danhsach')->with('thongbao','Bạn đã thêm thành công');
+        return redirect('quantri/tintuc/danhsach')->with('thongbao','Bạn đã thêm thành công');
     }
 
     public function getSua($id){
         $tinTuc=tinTuc::find($id);
-        return view('quantri.tinTuc.sua',['tinTuc'=>$tinTuc]);
+        $dsTheLoai=theloai::select('id','tentl')->get();
+        $dsLoaiTin=loaitin::select('id','tenlt')->get();
+        return view('quantri.tinTuc.sua',['tinTuc'=>$tinTuc,'dsTheLoai'=>$dsTheLoai,'dsLoaiTin'=>$dsLoaiTin]);
     }
 
-    public function postSua(tinTucRequest $request,$id){
-        //buoc dau no tien hanh kiem tra
-        //neu co loi thi no khong luu duoc và trả
-        //ve thong bao loi ban dau
-        //neu khong co nthino moi tien hanh luu va bao cho ta biet la da luu thanh cong
+    public function postSua(tintucsua $request,$id){
         $tinTuc=tinTuc::find($id);
-        $tinTuc->tentl=$request->tentl;
-        //echo changeTitle('dadada');
-        $tinTuc->tentlkd=changeTitle( $request->tentl);
-
+        $tinTuc->tieude=$request->tieude;
+        $tinTuc->tieudekd=changeTitle( $request->tieude);
+        $tinTuc->tomtat=$request->tomtat;
+        $hinh=explode('/',$request->hinh);
+        if ($hinh[7]===NULL) $tinTuc->hinh=$request->hinh;
+        else $tinTuc->hinh=$hinh[7];
+        $tinTuc->idtl=$request->theloai;
+        $tinTuc->idlt=$request->loaitin;
+        $tinTuc->anhien=$request->anhien;
+        $tinTuc->content=$request->noidung;
+        $tinTuc->TinNoiBat=$request->noibat;
         $tinTuc->save();
-        return redirect('quantri/tinTuc/danhsach')->with('thongbao','Bạn đã thêm thành công');
+        return redirect('quantri/tintuc/danhsach')->with('thongbao','Bạn đã sửa thành công');
     }
 
     public function getXoa($id){
-        $soLoaiTin=loaitin::where('idtl',$id)->count();
-        if ($soLoaiTin==0){//neu khong co tin nao trong loai thi tien hanh xoa
-            $tinTuc=tinTuc::find($id);
-            $tinTuc->delete();
-            return redirect('quantri/tinTuc/danhsach')->with('thongbao','Bạn đã xóa thành công');
-        }
-        else{
-            echo "<script type='text/javascript'>
-                alert('Bạn không thể xóa thể loại này vì nó chứa rất nhiều loại tin bên trong');
-                window.location='";
-            echo route('quantri/tinTuc/danhsach');
-            echo "';
-            </script>";
-        }
+        $tinTuc=tinTuc::find($id);
+        $tinTuc->delete();
+        return redirect('quantri/tintuc/danhsach')->with('thongbao','Bạn đã xóa thành công');
     }
 }
