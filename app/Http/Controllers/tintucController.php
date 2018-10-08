@@ -29,14 +29,16 @@ class tintucController extends Controller
         $tinTuc->tieude=$request->tieude;
         $tinTuc->tieudekd=changeTitle( $request->tieude);
         $tinTuc->tomtat=$request->tomtat;
-        $tinTuc->hinh=$request->hinh;
+        $hinh=explode('/',$request->hinh);
+        echo $hinh[7];
+        $tinTuc->hinh=$hinh[7];
         $tinTuc->idtl=$request->theloai;
         $tinTuc->idlt=$request->loaitin;
         $tinTuc->anhien=$request->anhien;
         $tinTuc->content=$request->noidung;
         $tinTuc->TinNoiBat=$request->noibat;
         $tinTuc->save();
-        return redirect('quantri/tintuc/danhsach')->with('thongbao','Bạn đã thêm thành công');
+        //return redirect('quantri/tintuc/danhsach')->with('thongbao','Bạn đã thêm thành công');
     }
 
     public function getSua($id){
