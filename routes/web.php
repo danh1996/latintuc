@@ -63,6 +63,19 @@ Route::group(['prefix'=>'quantri'],function (){
 
     });
 
+    Route::group(['prefix'=>'thanhvien'],function (){
+        Route::get('danhsach','usersController@danhsach')->name('quantri/thanhvien/danhsach');
+
+        Route::get('them','usersController@getThem');
+        Route::post('them','usersController@postThem');
+
+        Route::get('sua/{id}','usersController@getSua');
+        Route::post('sua/{id}','usersController@postSua');
+
+        Route::get('xoa/{id}','usersController@getXoa');
+
+    });
+
 
 });
 

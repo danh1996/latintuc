@@ -4,7 +4,7 @@
     <li class="active">
         <a href="quantri/index"> <i class="menu-icon fa fa-dashboard"></i>Trang chủ</a>
     </li>
-    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+    <h3 class="menu-title">Nội dung</h3><!-- /.menu-title -->
     <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Thể loại</a>
         <ul class="sub-menu children dropdown-menu">
@@ -27,13 +27,13 @@
         </ul>
     </li>
 
-    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
+    <h3 class="menu-title">Quản trị Thành viên</h3><!-- /.menu-title -->
 
     <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Thành viên</a>
         <ul class="sub-menu children dropdown-menu">
-            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
-            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
+            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="quantri/thanhvien/danhsach">Danh sách</a></li>
+            <li><i class="menu-icon ti-themify-logo"></i><a href="quantri/thanhvien/them">Thêm thành viên</a></li>
         </ul>
     </li>
     <li>
