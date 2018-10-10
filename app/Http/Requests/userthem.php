@@ -25,11 +25,10 @@ class userthem extends FormRequest
     {
         return [
             'hoten'=>'required',
-            'username'=>'required|min:3|unique:users,username',
+            'email'=>'require|unique:users,email',
             'password'=>'required',
             'diachi'=>'required',
             'dienthoai'=>'required',
-            'email'=>'required',
             'idgroup'=>'numeric'
         ];
     }
@@ -37,14 +36,11 @@ class userthem extends FormRequest
     public function messages()
     {
         return [
-            'tenlt.required'=>'Bạn ơi chưa nhập tên mà',
-            'username.required'=>'Bạn ơi chưa nhập tên mà',
-            'username.min'=>'Tên Đăng nhập bạn nhập quá ngắn',
-            'username.unique'=>'Tên Đăng nhập đã tồn tại bạn ơi',
-            'tenlt.max'=>'Tên loại tin bạn nhập quá dài',
+            'hoten.required'=>'Bạn ơi chưa nhập tên mà',
+            'email.required'=>'Bạn ơi chưa nhập tên mà',
+            'email.unique'=>'Email bạn nhập đã tồn tại bạn ơi',
             'diachi.required'=>'Bạn ơi chưa nhập địa chỉ mà',
             'dienthoai.required'=>'Bạn ơi chưa nhập điện thoại mà',
-            'email.required'=>'Bạn ơi chưa nhập email mà',
             'idgroup.numeric'=>'Bạn ơi chưa chọn loại user mà'
         ];
     }

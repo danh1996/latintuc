@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('quantri/assets/scss/style.css')}}">
     <link href="{{asset('quantri/assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
     <script src="{{asset('quantri/assets/js/ckeditor/ckeditor.js')}}"></script>
+
     <script src="{{asset('quantri/assets/js/ckfinder/ckfinder.js')}}"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -251,7 +252,6 @@
     <script>
         ( function ( $ ) {
             "use strict";
-
             jQuery( '#vmap' ).vectorMap( {
                 map: 'world_en',
                 backgroundColor: null,

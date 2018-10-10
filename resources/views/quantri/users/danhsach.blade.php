@@ -28,7 +28,7 @@
                 @foreach($userList as $ds)
                 <tr class="text-center">
                     <th scope="row">{{$ds->id}}
-                        <p><img width="100px" height="70px" src="dataupload/images/{{$ds->hinh}}"></p>
+                        <p><img width="100px" height="70px" src="dataupload/images/usersimg/{{$ds->hinh}}"></p>
                     </th>
                     <td>
                         <p>{{$ds->hoten}}</p>

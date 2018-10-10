@@ -14,10 +14,7 @@
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Họ tên</label></div>
                         <div class="col-12 col-md-9"><input type="text" name="hoten" placeholder="Nhập họ tên..." class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">Tên đăng nhập</label></div>
-                        <div class="col-12 col-md-9"><input type="text" name="username" placeholder="Nhập tên đăng nhập..." class="form-control"><small class="help-block form-text">Please enter your email</small></div>
-                    </div>
+
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">Mật khẩu</label></div>
                         <div class="col-12 col-md-9"><input type="password" name="password" placeholder="Nhập mật khẩu..." class="form-control"><small class="help-block form-text">Please enter a complex password</small></div>
@@ -49,10 +46,10 @@
                         <div class="col col-md-9">
                             <div class="form-check-inline form-check">
                                 <label for="inline-radio1" class="form-check-label ">
-                                    <input type="radio" id="inline-radio1" name="inline-radios" value="option1" class="form-check-input">Nam
+                                    <input type="radio" id="inline-radio1" name="inline-radios" value="1" class="form-check-input">Nam
                                 </label>
                                 <label for="inline-radio2" class="form-check-label ">
-                                    <input type="radio" id="inline-radio2" name="inline-radios" value="option2" class="form-check-input">Nữ
+                                    <input type="radio" id="inline-radio2" name="inline-radios" value="0" class="form-check-input">Nữ
                                 </label>
                             </div>
                         </div>
